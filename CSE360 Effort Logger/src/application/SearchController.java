@@ -44,17 +44,17 @@ public class SearchController {
 public void searchButton(ActionEvent event) throws IOException {
 	String input = searchField.getText();
 	
-	if (input.equals("Projects")) {
+	if (input.equalsIgnoreCase("Projects")) {
 		outputBox.clear();
 		String fileContent = readTextFile(Main.projectFile);
 		outputBox.appendText(fileContent);
 	
-	} else if (input.equals("Defect Logs")) {
+	} else if (input.equalsIgnoreCase("Defect Logs")) {
 		outputBox.clear();
 		String fileContent = readTextFile(Main.defectLogsFile);
 		outputBox.appendText(fileContent);
 		
-	} else if (input.equals("Effort Logs")) {
+	} else if (input.equalsIgnoreCase("Effort Logs")) {
 		outputBox.clear();
 		String fileContent = readTextFile(Main.effortLogsFile);
 		outputBox.appendText(fileContent);
@@ -107,7 +107,7 @@ private static boolean searchForProject(String filePath, String projectName) {
         newline = "";
         while ((line = br.readLine()) != null) {
             // Check if the line contains the project name
-            if (line.equals(projectName + ",")) {
+            if (line.equalsIgnoreCase(projectName + ",")) {
                 return true;
             }
         }
